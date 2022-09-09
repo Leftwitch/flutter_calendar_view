@@ -308,7 +308,7 @@ class MonthViewState<T extends Object?> extends State<MonthView<T>> {
                               date: date,
                               showBorder: widget.showBorder,
                               startDay: widget.startDay,
-                              displayDays: displayDays
+                              displayDays: widget.displayDays
                             ),
                           ),
                         ),
@@ -545,7 +545,7 @@ class _MonthPageBuilder<T> extends StatelessWidget {
   final CellTapCallback<T>? onCellTap;
   final DatePressCallback? onDateLongPress;
   final WeekDays startDay;
-  final displayDays;
+  final int displayDays;
 
   const _MonthPageBuilder({
     Key? key,
