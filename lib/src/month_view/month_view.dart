@@ -115,6 +115,8 @@ class MonthView<T extends Object?> extends StatefulWidget {
   final WeekDays startDay;
 
   /// Main [Widget] to display month view.
+
+  final int displayDays;
   const MonthView({
     Key? key,
     this.showBorder = true,
@@ -136,6 +138,7 @@ class MonthView<T extends Object?> extends StatefulWidget {
     this.onEventTap,
     this.onDateLongPress,
     this.startDay = WeekDays.monday,
+    this.displayDays = 42
   }) : super(key: key);
 
   @override
@@ -305,6 +308,7 @@ class MonthViewState<T extends Object?> extends State<MonthView<T>> {
                               date: date,
                               showBorder: widget.showBorder,
                               startDay: widget.startDay,
+                              displayDays: displayDays
                             ),
                           ),
                         ),
@@ -541,6 +545,7 @@ class _MonthPageBuilder<T> extends StatelessWidget {
   final CellTapCallback<T>? onCellTap;
   final DatePressCallback? onDateLongPress;
   final WeekDays startDay;
+  final displayDays;
 
   const _MonthPageBuilder({
     Key? key,
@@ -556,6 +561,7 @@ class _MonthPageBuilder<T> extends StatelessWidget {
     required this.onCellTap,
     required this.onDateLongPress,
     required this.startDay,
+    required this.displayDays
   }) : super(key: key);
 
   @override
@@ -570,7 +576,7 @@ class _MonthPageBuilder<T> extends StatelessWidget {
           crossAxisCount: 7,
           childAspectRatio: cellRatio,
         ),
-        itemCount: 42,
+        itemCount: displayDays,
         shrinkWrap: true,
         itemBuilder: (context, index) {
           final events = controller.getEventsOnDay(monthDays[index]);
